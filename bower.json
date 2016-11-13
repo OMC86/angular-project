@@ -17,7 +17,11 @@
   ],
   "devDependencies": {
     "bootstrap": "^3.3.7",
-    "angular-route": "^1.5.8",
     "angular": "^1.5.8"
+  },
+  "dependencies": {
+    "a0-angular-storage": "^0.0.15",
+    "angular-ui-router": "^0.3.2",
+    "angular-route": "^1.5.8"
   }
 }

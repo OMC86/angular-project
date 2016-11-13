@@ -1,0 +1,76 @@
+<div class='container'>
+
+		<!--BACK BUTTON-->
+
+	<div class="row">
+		<div class="col-sm-4 col-md-3 col-lg-3">
+			<a href='#/comment' type="button" class="btn btn-link" aria-label='Back'>
+			<span class='glyphicon glyphicon-chevron-left'></span>Back</a>	
+		</div>
+	</div>
+	
+		<!--TITLE INPUT-->
+
+<div class="formContainer">
+	<div class="row">
+		<div class='col-sm-12 col-lg-12'>
+			<form name="CommentForm" ng-submit="submitForm()" novalidate>
+			<div class="input-group-post">
+				<input type="text" class="col-sm-12 col-lg-12 text" ng-model='comment.title' placeholder="Title" describedby='post-title'>
+			</div>
+		</div>
+	</div>
+
+		<!--Glyphicons-->
+
+	<div class='row'>
+		<div class='col-sm-1 col-sm-offset-1 col-lg-1'>
+			<button type="button" class="btn btn-default" aria-label='Bold'>
+				<span class="glyphicon glyphicon-repeat"></span>
+			</button>
+		</div>
+		<div class='col-sm-1 col-lg-1'>
+			<button type="button" class="btn btn-default" aria-label='Bold'>
+				<span class="glyphicon glyphicon-repeat"></span>
+			</button>
+		</div>
+		<div class='col-sm-1 col-lg-1'>
+			<button type="button" class="btn btn-default" aria-label='Bold'>
+				<span class="glyphicon glyphicon-bold"></span>
+			</button>
+		</div>
+		<div class='col-sm-1 col-lg-1'>
+			<button type="button" class="btn btn-default" aria-label='Bold'>
+				<span class="glyphicon glyphicon-italic"></span>
+			</button>		
+		</div>
+		<div class='col-sm-1 col-lg-1'>
+			<button type="button" class="btn btn-default" aria-label='Bold'>
+				<span class="glyphicon glyphicon-link"></span>
+			</button>
+		</div>
+	</div>
+	
+
+		<!--POST INPUT-->
+
+
+	<div class="row">
+		<div class='col-sm-12 col-lg-12'>
+			<div class="input-group-post">
+				<textarea type="text" class="text" ng-model='comment.body' placeholder="Post description" describedby='post' rows="6"></textarea>
+			</div>
+		</div>
+	</div>
+
+		<!--SUBMIT BUTTON-->
+
+	<div class='row'>
+		<div col-sm-12>
+			<button type="submit" class="btn btn-info" aria-label='submit-post'>Submit</button>
+		</div>
+	</div>
+</form>
+</div>
+	
+</div>
