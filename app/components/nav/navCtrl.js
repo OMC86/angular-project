@@ -1,6 +1,6 @@
 angular.module('ProApp')
 
-	.controller('NavCtrl', function($scope) {
+	.controller('NavCtrl', ['$scope', function($scope) {
 
 		var user = firebase.auth().currentUser;
 
@@ -12,5 +12,5 @@ angular.module('ProApp')
 				$scope.Login = 'Log In';
 			}
 
-		})
+		}]);
 	

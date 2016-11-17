@@ -5,13 +5,13 @@
 
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/custom.css">
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-    <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
-    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script> 
-    <script type="text/javascript" src="bower_components/a0-angular-storage/dist/angular-storage.min.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script> 
+    <script type="text/javascript" src="bower_components/a0-angular-storage/dist/angular-storage.js"></script>
+    <script type="text/javascript" src="node_modules/angularfire/dist/angularfire.js"></script>
     <script type="text/javascript" src="node_modules/firebase/firebase.js"></script>
-    <script type="text/javascript" src="node_modules/angularfire/dist/angularfire.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">-->
    
@@ -42,8 +42,10 @@
 
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+<script src="app/firebaseinit.js"></script>
+
     <script src="app/app.js"></script>
-    <script src="app/firebaseinit.js"></script>
     <script src="app/firebaseLinkCtrl.js"></script>
     <script src="app/components/home/homeController.js"></script>
     <script src="app/components/login/loginController.js"></script>
@@ -51,6 +53,6 @@
     <script src="app/components/postComments/postCommentsCtrl.js"></script>
     <script src="app/components/nav/navCtrl.js"></script>
     <script src="app/components/nav/navDirective.js"></script>
-    <
+    
 </body>
 </html>

@@ -12,14 +12,17 @@
 		<!--TITLE INPUT-->
 
 <div class="formContainer">
-	<div class="row">
-		<div class='col-sm-12 col-lg-12'>
-			<form name="CommentForm" ng-submit="submitForm()" novalidate>
-			<div class="input-group-post">
-				<input type="text" class="col-sm-12 col-lg-12 text" ng-model='comment.title' placeholder="Title" describedby='post-title'>
+	<form role="form" name="commentForm" ng-submit="submitForm()" novalidate>
+		<legend>Create Post</legend>
+		<div class="row">
+			<div class='col-sm-8 col-lg-8'>
+			
+			<div class="form-group">
+				<label for="title">Post Title</label>
+					<input type="text" id="title" name="title" class="form-control" autofocus ng-model='post.title' placeholder="Title" ng-minlength = "1" required="">
+						<p ng-show="commentForm.title.$pristine" class="help-block">A title must have at least 1 character</p>
+				
 			</div>
-		</div>
-	</div>
 
 		<!--Glyphicons-->
 
@@ -49,25 +52,21 @@
 				<span class="glyphicon glyphicon-link"></span>
 			</button>
 		</div>
-	</div>
+	</div> 
 	
 
 		<!--POST INPUT-->
 
 
-	<div class="row">
-		<div class='col-sm-12 col-lg-12'>
-			<div class="input-group-post">
-				<textarea type="text" class="text" ng-model='comment.body' placeholder="Post description" describedby='post' rows="6"></textarea>
+	<div class="form-group">
+		<label for="body">Post</label>
+			<textarea id="body" name="body" class="form-control" ng-model='post.body' placeholder="Post body" ng-minlength="10" required=""></textarea>
+			<p ng-show="commentForm.body.$pristine" class="help-block">The body must have at least 10 characters</p>
 			</div>
-		</div>
-	</div>
 
-		<!--SUBMIT BUTTON-->
-
-	<div class='row'>
-		<div col-sm-12>
-			<button type="submit" class="btn btn-info" aria-label='submit-post'>Submit</button>
+			<div class="form-group">
+				<button type="submit" class="btn btn-info" ng-disabled="commentForm.$invalid">Submit Post</button>
+			</div>
 		</div>
 	</div>
 </form>

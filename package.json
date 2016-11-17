@@ -18,7 +18,7 @@
   "homepage": "https://github.com/OMC86/angular-project#readme",
   "dependencies": {
     "angularfire": "^2.1.0",
-    "firebase": "^3.5.3",
+    "firebase": "^3.6.1",
     "firebase-admin": "^4.0.1"
   }
 }

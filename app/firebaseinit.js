@@ -1,4 +1,4 @@
-(function() {
+
 
 	
   // Initialize Firebase
@@ -9,8 +9,7 @@
     storageBucket: "stream1-project.appspot.com",
     messagingSenderId: "236124783086"
   };
-  firebase.initializeApp(config);
+  var firebasedb = firebase.initializeApp(config);
 
 
 
-}());

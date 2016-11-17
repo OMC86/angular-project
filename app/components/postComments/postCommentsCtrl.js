@@ -1,15 +1,19 @@
 angular.module('ProApp')
 
-	.controller('PostCommentsCtrl', function($scope) {
+	.controller('PostCommentsCtrl', ['$scope', function($scope) {
 
-		var userToken = firebase.auth().currentUser.getToken;
+		$scope.submitForm = function(postId, postTitle, postBody){
 
+			var postTitle = $scope.post.title;
+			var postBody = $scope.post.body;
 
+			firebasedb.database().ref('Post/' + postId).set({
+				postTitle: postTitle,
+				postBody: postBody
+		});
 
-		$scope.postItem = [];
 
 		
 
-
-
-	});
+	}
+}]);

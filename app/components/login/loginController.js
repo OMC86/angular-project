@@ -1,33 +1,36 @@
 angular.module('ProApp')
 
-	.controller('LoginController', function($scope, $location) {
+	.controller('LoginController', ['$scope', function($scope) {
 
-		var userEmail = document.getElementById('userEmail');
+	/*	var userEmail = document.getElementById('userEmail');
 		var userPassword = document.getElementById('userPassword');
 		var btnLogin = document.getElementById('btnLogin');
 		var btnSignUp = document.getElementById('btnSignUp');
 		var btnLogout = document.getElementById('btnLogout');
 		var input = document.getElementById('input');
 
+		*/
+
 		//---LOGIN WITH EMAIL AND PASSWORD---//
 
-		btnLogin.addEventListener('click', e => {
+		$scope.submitForm = function(username, password) {
 
-			var email = userEmail.value;
-			var password = userPassword.value;
-			var auth = firebase.auth();
+			var email = $scope.user.email;
+			var password = $scope.user.password;
+			
+			firebasedb.database().ref('/users' + email).set({
+				username: email,
+				password: password
+			});
+		}
 
-			var promise = auth.signInWithEmailAndPassword(email, password);
 
-			promise.catch(e => console.log(e.message));
-
-
-		});
+		
 
 		//---CREATE USER WITH EMAIL AND PASSWORD AND SIGN IN---//
 
 
-			btnSignUp.addEventListener('click', e => {
+		/*	btnSignUp.addEventListener('click', e => {
 
 			var email = userEmail.value;
 			var password = userPassword.value;
@@ -71,8 +74,8 @@ angular.module('ProApp')
 					input.classList.remove('hide');
 					
 				}
-			});
-		});
+			});                */
+		}]); 
 
 
 			
