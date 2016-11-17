@@ -54,7 +54,7 @@ angular.module('ProApp')
 				$location.path('/comment');
 			});
 			
-			//---CHECK AUTH STATE CHANGE, SHOW/HIDE LOGOUT AND COMMENT BTN--//
+		*/	//---CHECK AUTH STATE CHANGE, SHOW/HIDE LOGOUT AND COMMENT BTN--//
 
 			firebase.auth().onAuthStateChanged(function(user) {
 				if(user) {
@@ -74,7 +74,7 @@ angular.module('ProApp')
 					input.classList.remove('hide');
 					
 				}
-			});                */
+			});                
 		}]); 
 
 
