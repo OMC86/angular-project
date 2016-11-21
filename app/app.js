@@ -1,8 +1,10 @@
 angular.module('ProApp', [
 	'ngRoute',
 	'ui.router',
+	'angular-storage',
 	'firebase',
-	'NavDirective'
+	'NavDirective',
+	'StarCountDirective'
 	])
 
 	.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
@@ -31,6 +33,12 @@ angular.module('ProApp', [
 				url: '/post',
 				templateUrl: 'app/components/postComments/postComments.html',
 				controller: 'PostCommentsCtrl'
+			})
+
+			.state('Read', {
+				url: '/read',
+				templateUrl: 'app/components/readComments/readComments.html',
+				controller: 'ReadCommentsCtrl'
 			})
 
 		}])

@@ -6,7 +6,7 @@
 
 
 		<div class='col-sm-12 col-sm-offset-10'>
-			<a href='#/post' class='btn btn-info' type='button'>New post</a>
+			<a href='#/post' class='btn btn-info' id="newPostBtn" type='button'>New post</a>
 		</div>
 	</div>
 
@@ -20,7 +20,7 @@
 	
 			<div class='dropdown'>
 
-				<button class="btn btn-default dropdown-toggle" type='button' id='sortBy' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>Sort By
+				<button class="btn btn-default dropdown-toggle sortBy" type='button' id='sortBy' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>Sort By
 				<span class='caret'></span>
 				</button>
 
@@ -40,20 +40,36 @@
 
 	<div class='row'>
 		<div class="col-sm-12">
-			<div id="read-post" class='container'>
+			
+			<ul style="list-style: none;">
 
+				<li class="post-view" ng-repeat="post in postList ">
 
-			</div>
+					<div star-count></div>
+
+						<div class="post">{{post.body}} First 25 words of body
+						<br><br>
+							{{post.user}}By: chris toal . 1 hour ago
+						
+						</div>
+							
+						<div class="commentCount">{{post.commentCount}} Comment
+						</div>
+					</div>
+
+				</li>
+						
+			</ul>
 		</div>
 	</div>
-
-
+	
+	
 
 								<!--PAGE NAVIGATION-->
 
 
 	<div class='row'>
-		<div class="col-sm-offset-4">
+		<div class="col-sm-12 col-lg-12">
 			<nav aria-label="Page navigation">
   				<ul class="pagination">
 			    	<li>
@@ -73,7 +89,13 @@
     </li>
   </ul>
 </nav>
+		<div class="newOldBtn">
+		<button type="button" class="btn btn default center" id="newer">Newer</button>
+		<button type="button" class="btn btn default center" id="older">Older</button>
 		</div>
+		
+
+
 	</div>
 	
 </div>

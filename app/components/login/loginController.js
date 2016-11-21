@@ -1,6 +1,6 @@
 angular.module('ProApp')
 
-	.controller('LoginController', ['$scope', function($scope) {
+	.controller('LoginController', ['$scope', 'store', function($scope, store) {
 
 	/*	var userEmail = document.getElementById('userEmail');
 		var userPassword = document.getElementById('userPassword');
@@ -11,20 +11,26 @@ angular.module('ProApp')
 
 		*/
 
-		//---LOGIN WITH EMAIL AND PASSWORD---//
+		//---CREATE NEW USER WITH EMAIL AND PASSWORD---//
 
 		$scope.submitForm = function(username, password) {
 
 			var email = $scope.user.email;
 			var password = $scope.user.password;
 			
-			firebasedb.database().ref('/users' + email).set({
-				username: email,
-				password: password
-			});
-		}
+			var userModalRef = firebasedb.database().ref('User');
+			var newUser = userModalRef.push();
+					newUser.set({
+						username: email,
+						password: password
+					});
 
+					store.set("username", email);
+					store.set("userKey", newUser.key);
 
+				console.log(newUser);
+			};
+		
 		
 
 		//---CREATE USER WITH EMAIL AND PASSWORD AND SIGN IN---//
