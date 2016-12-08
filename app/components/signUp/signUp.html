@@ -1,15 +1,21 @@
-<div>
-    <div class="container">
+ <div class="container">
         <div class="row">
             <div class="col-sm-6">
                 <form name="loginForm" ng-submit='submitForm()' novalidate>
                 
-                <div id='input' ng-hide="showLogout()">
+                <div id='input'>
                     <div class="form-group">
 
-                        <h1>Login</h1>
+                        <h1>Sign Up</h1>
+                        <label>E-mail</label>
                         <input type="text" name="name" class="form-control" placeholder='E-mail' ng-model="user.email" required>
                         <p ng-show="loginForm.name.$pristine" class="help-block">Your e-mail is required</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="name" class="form-control" placeholder='Name' ng-model=user.name required>
+                        <p ng-show="loginForm.password.$pristine" class="help-block">Your name is required</p>
                     </div>
 
                     <div class="form-group">
@@ -20,15 +26,9 @@
                 </div>
 
  
-                    <button  id="btnLogin" type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid" ng-hide="showLogout()">Log in</button>
-
-                    <button id='btnLogout' ng-click="logout()" class='btn btn-action' ng-show="showLogout()">
-                        Log out
-                    </button>
-                     
+                    <button type="submit" id='btnSignUp' class="btn btn-secondary" ng-disabled="loginForm.$invalid">Sign Up</button>
 
                 </form>
             </div>
         </div>
     </div>
-</div>

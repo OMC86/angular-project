@@ -1,35 +1,94 @@
 angular.module('ProApp')
 
-	.controller('LoginController', ['$scope', 'store', function($scope, store) {
+	.controller('LoginController', ['$scope', 'store', '$state', '$rootScope', function($scope, store, $state, $rootScope) {
 
-	/*	var userEmail = document.getElementById('userEmail');
-		var userPassword = document.getElementById('userPassword');
-		var btnLogin = document.getElementById('btnLogin');
-		var btnSignUp = document.getElementById('btnSignUp');
-		var btnLogout = document.getElementById('btnLogout');
-		var input = document.getElementById('input');
+		
 
-		*/
+		$rootScope.$on('userLoggedIn', function() {  
 
-		//---CREATE NEW USER WITH EMAIL AND PASSWORD---//
+		var user = store.get("username");
 
-		$scope.submitForm = function(username, password) {
 
-			var email = $scope.user.email;
+		$scope.showLogout = function() {
+
+			if(user)
+				return true;
+
+		};
+	});
+
+		$scope.logout = function() {
+				store.remove("username");
+				store.remove("password");
+				store.remove("key");
+				store.remove("name");
+				$rootScope.$broadcast('userLoggedOut');
+				$state.go("home");
+
+			};
+		
+
+
+			//---LOG IN USER WITH EMAIL AND PASSWORD---//
+
+
+		$scope.submitForm = function() {
+			var username = $scope.user.email;
 			var password = $scope.user.password;
 			
+
 			var userModalRef = firebasedb.database().ref('User');
-			var newUser = userModalRef.push();
-					newUser.set({
-						username: email,
-						password: password
-					});
+			
+			userModalRef.orderByChild("username").on("child_added", function(data) {
 
-					store.set("username", email);
-					store.set("userKey", newUser.key);
+				if(data.val().username !== username){
+					alert("No user exists, Please sign up!.");
+					$state.go('signUp');
+				}else{
+			
 
-				console.log(newUser);
+			userModalRef.orderByChild("username").equalTo(username).once("child_added", function(data){
+				
+				var key = data.key;
+		
+
+
+
+				if(!!data.val().username && data.val().password === password){
+
+					 store.set("username", username);
+                     store.set("password", password);
+                     store.set("key", key);
+                    
+
+                     $rootScope.$broadcast('userLoggedIn');
+
+                     $state.go('comment');
+
+					console.log("logged in");
+
+				}else{
+					alert("Incorrect password")
+				}
+			
+				});
 			};
+		});
+	};
+
+	
+		
+	
+	
+
+
+		var user = store.get("username");
+		$scope.showLogout = function() {
+
+			if(user)
+				return true;
+
+		};
 		
 		
 
@@ -47,40 +106,20 @@ angular.module('ProApp')
 
 
 			});
+*/
+		
 
-			//---LOGOUT---//
-
-			btnLogout.addEventListener('click', e => {
-				firebase.auth().signOut();
-			});
+			
 
 			//---NAVIGATE TO COMMENTS PAGE---//
 
-			btnComment.addEventListener('click', e => {
+	/*		btnComment.addEventListener('click', e => {
 				$location.path('/comment');
 			});
 			
-		*/	//---CHECK AUTH STATE CHANGE, SHOW/HIDE LOGOUT AND COMMENT BTN--//
+		*/	//---CHECK AUTH STATE CHANGE, SHOW/HIDE LOGOUT AND COMMENT BTN--//  */
 
-			firebase.auth().onAuthStateChanged(function(user) {
-				if(user) {
-					console.log(user);
-					btnLogout.classList.remove('hide');
-					btnComment.classList.remove('hide');
-					btnLogin.classList.add('hide');
-					btnSignUp.classList.add('hide');
-					input.classList.add('hide');
-					
-				} else {
-					console.log('Not logged in');
-					btnLogout.classList.add('hide');
-					btnComment.classList.add('hide');
-					btnLogin.classList.remove('hide');
-					btnSignUp.classList.remove('hide');
-					input.classList.remove('hide');
-					
-				}
-			});                
+		
 		}]); 
 
 

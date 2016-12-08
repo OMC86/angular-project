@@ -23,20 +23,28 @@ angular.module('ProApp', [
 				controller: 'LoginController'
 			})
 
-			.state('Comment', {
-				url:'/comment',
+			.state('signUp', {
+				url: '/sign',
+				templateUrl: 'app/components/signUp/signUp.html',
+				controller: 'SignUpCtrl'
+			})
+
+			.state('comment', {
+				url:'/comment/:postId',
 				templateUrl: 'app/components/commentsHome/commentsHome.html',
 				controller: 'CommentsHomeCtrl'
+				
 			})
 
-			.state('Post', {
+			.state('post', {
 				url: '/post',
 				templateUrl: 'app/components/postComments/postComments.html',
-				controller: 'PostCommentsCtrl'
+				controller: 'PostCommentsCtrl',
+
 			})
 
-			.state('Read', {
-				url: '/read',
+			.state('read', {
+				url: '/read/:postId',
 				templateUrl: 'app/components/readComments/readComments.html',
 				controller: 'ReadCommentsCtrl'
 			})
