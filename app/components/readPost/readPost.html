@@ -1,0 +1,109 @@
+<div class="container">
+							<!--NEW POST BUTTON-->
+
+	<div class='col-sm-12 col-sm-offset-10'>
+			<a ui-sref='newPost' class='btn btn-info' id="newPostBtn" type='button'>New post</a>
+	</div>
+
+	<div btn-back></div>
+
+
+
+
+					<!--DESCRIPTION STARCOUNT AND USER INFO-->
+	<div class="readFull" ng-show="fullPost">
+
+		<div star-count class="readStarCount"></div>
+
+
+
+								<!--POST DESCRIPTION-->
+
+		<div class="postDescription">
+			{{postTitle}}
+		</div>
+
+							<!--USER DESCRIPTION-->
+
+		<div class="userInfo">Posted by: <div class="cap">{{postByName}}</div>
+		</div>
+
+
+						<!--POST-->
+
+
+		<div class="postBody">
+			{{postBody}}
+		</div>
+	</div>
+
+
+							<!--FACEBOOK,TWITTER,IN,G+-->
+
+	<div class="social">
+
+		<a href=""><i id="facebook" class="fa fa-facebook fa-2x"></i></a>
+		<a href=""><i id="twitter" class="fa fa-twitter fa-2x"></i></a>
+		<a href=""><i id="linkedin" class="fa fa-linkedin fa-2x"></i></a>
+		<a href=""><i id="gPlus" class="fa fa-google-plus fa-2x"></i></a>
+		<a href=""><i id="commentBubble" class="fa fa-comment-o fa-2x"></i></a>
+
+	</div>
+
+						<!--COMMENT-->
+
+
+	<div class="readFullComment" ng-repeat="comments in fullComment">
+
+		<div star-count class="commentStarCount"></div>
+
+		<div class="userInfo">{{comments.photo}} <div class="cap">{{comments.name}}</div> <br>{{comments.postedOn}} 
+			<br><div class='comment'>{{comments.comment}}</div>
+		</div>
+	</div>
+
+						
+
+						<!--MAKE NEW COMMENTS-->
+
+
+
+
+<div class="formContainer comments">
+	<form role="form" name="commentForm" ng-submit="submitForm()" novalidate>
+		<div class="row">
+			<div class='col-sm-9 col-lg-9'>
+
+	<div class="form-group">
+		<label for="comment"></label>
+			<textarea id="comment" name="comment" class="form-control" ng-model='post.comment' placeholder="Comments" ng-minlength="1" required="">				
+			</textarea>
+
+			<p ng-show="commentForm.$pristine" class="help-block">Comments must have at least 1 character</p>
+			</div>
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-info" ng-disabled="commentForm.$invalid">Submit Post</button>
+			</div>
+
+
+
+	<div class="userPhoto">User.Photo</div>
+
+	</div>
+
+		
+
+			
+
+		
+	</div>
+
+
+</div>
+
+
+
+
+
+

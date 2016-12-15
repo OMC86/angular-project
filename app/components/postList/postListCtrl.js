@@ -1,42 +1,52 @@
 angular.module('ProApp')
 
-	.controller('CommentsHomeCtrl', ['$scope', '$state', '$stateParams', function($scope, $state, $stateParams) {
+	.controller('PostListCtrl', ['$scope', '$state', '$stateParams', function($scope, $state, $stateParams) {
 
 
 		/*--RETRIVE COMMENTS FROM DATABASE AND DISPLAY 10 PER PAGE (error can not use apply $ digest already in operation)--*/
 
 		$scope.postList = [];
 
+
 		var readPost = firebasedb.database().ref('Post').limitToLast(10);
 		
 			readPost.once('value', function(snapshot) {
+	
 
 				$scope.$apply(function(){
 
+				
+
 				$scope.postList  = snapshot.val();
 
-
+		var pBody = snapshot.val();
 
 				
+				function firstLine(pBody){
 
-			$scope.goToReadView = function() {
+				if(pBody.length > 15) {
 
-				$scope.state = $state.current;
-				$scope.postId = $stateParams.postId;				
+				return (pBody.substring(0,15) + "...");
+			}else{
+				return (pBody);
+
+			};
+		};
+		
+		console.log(pBody);
+		
 
 
-				var postRef = firebasedb.database().ref('Post');
 
-				postRef.orderByChild('postId').once('child_added', function(snapshot) {
+		//	for (x in $scope.postList){
 
-				var snap = snapshot.val();
-				var postId = snap.postId;
+		//	}
+				console.log(snapshot.val());
 
+
+			$scope.goToReadView = function(postId) {
 				
 				$state.go('read', {postId: postId});   
-
-			});
-
 			};
 
 		});

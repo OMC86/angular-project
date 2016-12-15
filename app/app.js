@@ -4,7 +4,9 @@ angular.module('ProApp', [
 	'angular-storage',
 	'firebase',
 	'NavDirective',
-	'StarCountDirective'
+	'StarCountDirective',
+	'BackBtn',
+	'User'
 	])
 
 	.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
@@ -29,24 +31,24 @@ angular.module('ProApp', [
 				controller: 'SignUpCtrl'
 			})
 
-			.state('comment', {
-				url:'/comment/:postId',
-				templateUrl: 'app/components/commentsHome/commentsHome.html',
-				controller: 'CommentsHomeCtrl'
+			.state('postList', {
+				url:'/postList',
+				templateUrl: 'app/components/postList/postList.html',
+				controller: 'PostListCtrl'
 				
 			})
 
-			.state('post', {
-				url: '/post',
-				templateUrl: 'app/components/postComments/postComments.html',
-				controller: 'PostCommentsCtrl',
+			.state('newPost', {
+				url: '/newPost',
+				templateUrl: 'app/components/newPost/newPost.html',
+				controller: 'NewPostCtrl',
 
 			})
 
 			.state('read', {
 				url: '/read/:postId',
-				templateUrl: 'app/components/readComments/readComments.html',
-				controller: 'ReadCommentsCtrl'
+				templateUrl: 'app/components/readPost/readPost.html',
+				controller: 'ReadPostCtrl'
 			})
 
 		}])

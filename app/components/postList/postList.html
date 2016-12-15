@@ -6,7 +6,7 @@
 
 
 		<div class='col-sm-12 col-sm-offset-10'>
-			<a ui-sref='post' class='btn btn-info' id="newPostBtn" type='button'>New post</a>
+			<a ui-sref='newPost' class='btn btn-info' id="newPostBtn" type='button'>New post</a>
 		</div>
 	</div>
 
@@ -43,14 +43,14 @@
 			
 			<ul style="list-style: none;">
 			 
-				<li class="post-view" ng-repeat="post in postList" ng-click='goToReadView()'>
+				<li class="post-view" ng-repeat="post in postList" ng-click='goToReadView(post.postId)'>
 
 					<div star-count></div>
 
 
-						<div class="post">{{post.postBody}} First 15 words of body
+						<div class="post" id="firstLine">{{post.postBody}} </div>
 						<br><br>
-							{{post.postedBy}} Posted on: {{post.postedOn}}
+							 <div class='post'>Posted by: <div class='cap'>{{post.postByName}},</div></div> on: {{post.postedOn}}
 						
 						</div>
 							

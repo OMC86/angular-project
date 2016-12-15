@@ -1,12 +1,13 @@
 angular.module('ProApp')
 
-	.controller('LoginController', ['$scope', 'store', '$state', '$rootScope', function($scope, store, $state, $rootScope) {
+	.controller('LoginController', ['$scope', 'store', '$state', '$rootScope','User', function($scope, store, $state, $rootScope,User) {
 
 		
 
 		$rootScope.$on('userLoggedIn', function() {  
 
 		var user = store.get("username");
+
 
 
 		$scope.showLogout = function() {
@@ -39,43 +40,49 @@ angular.module('ProApp')
 
 			var userModalRef = firebasedb.database().ref('User');
 			
-			userModalRef.orderByChild("username").on("child_added", function(data) {
+			userModalRef.orderByChild("username").equalTo(username).once("child_added", function(data) {
 
-				if(data.val().username !== username){
+		
+
+				if(data.val() === null || data.val().username !== username){
 					alert("No user exists, Please sign up!.");
 					$state.go('signUp');
 				}else{
-			
 
-			userModalRef.orderByChild("username").equalTo(username).once("child_added", function(data){
-				
-				var key = data.key;
 		
+					
 
+			userModalRef.orderByChild("username").equalTo(username).once("child_added", function(data) {
+					
 
+					if(!!data.val() && data.val().username && data.val().password === password){
+						var key = data.key;
+						
 
-				if(!!data.val().username && data.val().password === password){
+					/*	User.setUserInfo({username: data.val().username, name: data.val().name}); */
 
-					 store.set("username", username);
-                     store.set("password", password);
-                     store.set("key", key);
-                    
+						 store.set("username", username);
+	                     store.set("password", password);
+	                     store.set("key", key);
+	                     store.set("name", data.val().name); 
+	                    
 
-                     $rootScope.$broadcast('userLoggedIn');
+	                     $rootScope.$broadcast('userLoggedIn');
 
-                     $state.go('comment');
+	                     $state.go('postList');
 
-					console.log("logged in");
-
-				}else{
-					alert("Incorrect password")
-				}
-			
+					}else{
+						alert("Incorrect password");
+					}
 				});
 			};
-		});
-	};
+      
+			});
+		};
+		  
 
+
+		
 	
 		
 	

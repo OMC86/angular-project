@@ -1,8 +1,10 @@
 angular.module('ProApp')
 
-	.controller('PostCommentsCtrl', ['$scope','store', function($scope, store) {
+	.controller('NewPostCtrl', ['$scope','store','User', '$state', function($scope, store, User, $state) {
 
 		$scope.submitForm = function(postId, postTitle, postBody, postedOn, postedBy, starCount, commentCount){
+
+
 
 			var postTitle = $scope.post.title;
 			var postBody = $scope.post.body;
@@ -13,6 +15,7 @@ angular.module('ProApp')
 			var postedOn = new Date();
 			var starCount = 0;
 			var commentCount = 0;
+
 				newPost.set({
 					postId : postId,
 					postTitle : postTitle,
@@ -20,8 +23,14 @@ angular.module('ProApp')
 					postedOn : postedOn.toString(),
 					postedBy : username,
 					starCount: '1',
-					commentCount: '1'
+					commentCount: '1',
+					postByName : User.getUserInfo().name ?  User.getUserInfo().name  : ''
 				});  
+
+				$state.go('postList');
+
+
+
 
 		/*	
 

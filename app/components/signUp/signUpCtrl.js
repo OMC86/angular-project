@@ -1,22 +1,52 @@
 angular.module('ProApp')
 
-    .controller('SignUpCtrl', ['$scope', '$rootScope', 'store','$state', '$window', function($scope, $rootScope, store, $state, $window) {
+    .controller('SignUpCtrl', ['$scope', '$rootScope', 'store','$state', '$window','User', function($scope, $rootScope, store, $state, $window,User) {
+
+      
+
+        
 
 
-$scope.submitForm = function(username, name, password) {
+$scope.submitForm = function(username, password, name, photo) {
 
             var username = $scope.user.email;
             var password = $scope.user.password;
             var name = $scope.user.name;
+            var photo = $scope.user.photo;
+
+          
+            var storeRef = firebasedb.storage().ref('photos/' + photo);
+
+                storeRef.put(photo).then(function(snapshot) {
+                    var pic = snapshot.val();
+                    console.log(pic);
+                });
+            
+
+
+
+            
+
+
+
+
+
             var userModalRef = firebasedb.database().ref('User');
 
-        /*  userModalRef.orderByChild("username").on("child_added", function(data) {
 
-             if(data.val().username === username){  
+
+
+
+         userModalRef.equalTo(username).once("value", function(data) {
+
+            
+            console.log(data.val());
+
+             if(!!data.val()){  
 
                     alert('user exists');
                     $window.location.reload();
-                }else{   */
+                }else{   
     
 
                 var newUser = userModalRef.push();
@@ -26,21 +56,28 @@ $scope.submitForm = function(username, name, password) {
                             username: username,
                             name: name,
                             password: password
-                        });
+                        });   
 
 
                         store.set("username", username);
                         store.set("key", newUser.key);
                         store.set("name", name);
+
+                      
+                        User.setUserInfo({username: username, name: name});
                         $rootScope.$broadcast('userLoggedIn');
 
-                        $state.go('comment');
+
+
+                        $state.go('postList');
 
                     console.log(newUser);
                     
               
                 
             };
+        }); 
+      }
     
  
 }]);
