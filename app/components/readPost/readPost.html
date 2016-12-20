@@ -25,7 +25,7 @@
 
 							<!--USER DESCRIPTION-->
 
-		<div class="userInfo">Posted by: <div class="cap">{{postByName}}</div>
+		<div class="userInfo">Posted by: <div class="cap">{{postByName}},</div>
 		</div>
 
 
@@ -57,7 +57,7 @@
 
 		<div star-count class="commentStarCount"></div>
 
-		<div class="userInfo">{{comments.photo}} <div class="cap">{{comments.name}}</div> <br>{{comments.postedOn}} 
+		<div class="userInfo">{{comments.photo}} <div class="cap">{{comments.name}}</div> <br>{{comments.postedOn | limitTo: 15}} 
 			<br><div class='comment'>{{comments.comment}}</div>
 		</div>
 	</div>
@@ -88,9 +88,7 @@
 
 
 
-	<div class="userPhoto">User.Photo</div>
-
-	</div>
+	
 
 		
 

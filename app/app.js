@@ -6,7 +6,8 @@ angular.module('ProApp', [
 	'NavDirective',
 	'StarCountDirective',
 	'BackBtn',
-	'User'
+	'DropDownBtn'
+	
 	])
 
 	.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {

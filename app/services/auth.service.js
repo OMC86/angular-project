@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('User', [])
+        .module('ProApp')
         .factory('User', User);
 
     User.$inject = [];

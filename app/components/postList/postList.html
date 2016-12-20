@@ -15,24 +15,8 @@
 
 
 
-	<div class='row'>
-		<div class='col-sm-12'>
-	
-			<div class='dropdown'>
-
-				<button class="btn btn-default dropdown-toggle sortBy" type='button' id='sortBy' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>Sort By
-				<span class='caret'></span>
-				</button>
-
-				<ul class="dropdown-menu" aria-labelledby='sortBy'>
-					<li><a href="">Date></a></li>
-					<li><a href="">Name</a></li>
-					<li><a href="">Newest></a></li>
-					<li><a href="">Oldest</a></li>
-				</ul>
-			</div>	
-		</div>
-	</div>
+	<div ng-controller="DropDownCtrl" btn-drop-down></div>
+		
 
 							<!--CONTAINER FOR COMMENTS-->
 
@@ -48,11 +32,11 @@
 					<div star-count></div>
 
 
-						<div class="post" id="firstLine">{{post.postBody}} </div>
+						<div class="post">{{post.postBody | limitTo:100}} {{post.postBody.length  > 100 ? '...' : ''}} </div>
 						<br><br>
-							 <div class='post'>Posted by: <div class='cap'>{{post.postByName}},</div></div> on: {{post.postedOn}}
-						
+							 <div class='post'>Posted by: <div class='cap'>{{post.postByName}}</div>, On: {{post.postedOn | limitTo: 15}}
 						</div>
+					
 							
 						<div class="commentCount">{{post.commentCount}} Comment
 						</div>
@@ -100,3 +84,5 @@
 	</div>
 	
 </div>
+
+

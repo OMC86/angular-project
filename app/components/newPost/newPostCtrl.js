@@ -22,8 +22,8 @@ angular.module('ProApp')
 					postBody : postBody,
 					postedOn : postedOn.toString(),
 					postedBy : username,
-					starCount: '1',
-					commentCount: '1',
+					starCount: starCount,
+					commentCount: commentCount,
 					postByName : User.getUserInfo().name ?  User.getUserInfo().name  : ''
 				});  
 

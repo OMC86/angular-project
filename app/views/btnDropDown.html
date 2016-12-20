@@ -1,0 +1,20 @@
+<div class='row'>
+		<div class='col-sm-12'>
+	
+			<div class='dropdown' dropdown>
+
+				<button class="btn btn-default dropdown-toggle" type='button' id='sortBy' data-toggle="dropdown" aria-haspopup='true' aria-expanded='true' data-target='#drop-menu' ng-click="dropDown()">Sort By{{selectedItem}}
+				<span class='caret'></span>
+				</button>
+
+				<ul id='drop-menu' class="dropdown-menu" aria-labelledby='drop-down-menu'>
+					<li ng-repeat="item in items"><a ng-click="select()">{{item}}</a></li>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+    

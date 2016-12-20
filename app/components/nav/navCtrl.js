@@ -1,6 +1,6 @@
 angular.module('ProApp')
 
-	.controller('NavCtrl', ['$scope', 'store', '$rootScope', function($scope, store, $rootScope) {
+	.controller('NavCtrl', ['$scope', 'store', '$rootScope', 'User', function($scope, store, $rootScope, User) {
 
 
 
@@ -8,10 +8,10 @@ angular.module('ProApp')
 		$rootScope.$on('userLoggedIn', function() {
 
 
-		var user = store.get("username");
+		var user = store.get('username');
 
 			if(user) {
-				$scope.Login = 'This will be you profile pic';
+				$scope.Login = store.get('name');
 				
 
 			}else{
@@ -22,10 +22,10 @@ angular.module('ProApp')
 
 		$rootScope.$on('userLoggedOut', function() {
 
-		var user = store.get("username");
+		var user = store.get('username');
 
 			if(user) {
-				$scope.Login = 'This will be you profile pic';
+				$scope.Login = store.get('name');
 				
 
 			}else{
@@ -34,10 +34,10 @@ angular.module('ProApp')
 			}
 		});
 
-		var user = store.get("username");
+		var user = store.get('username');
 
 			if(user) {
-				$scope.Login = 'This will be you profile pic';
+				$scope.Login = store.get('name');
 				
 
 			}else{

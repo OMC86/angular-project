@@ -6,7 +6,7 @@ angular.module('ProApp')
 
 		$rootScope.$on('userLoggedIn', function() {  
 
-		var user = store.get("username");
+		var user = store.get('username');
 
 
 
@@ -19,10 +19,9 @@ angular.module('ProApp')
 	});
 
 		$scope.logout = function() {
-				store.remove("username");
-				store.remove("password");
-				store.remove("key");
-				store.remove("name");
+				
+				store.remove('username');
+				store.remove('name');
 				$rootScope.$broadcast('userLoggedOut');
 				$state.go("home");
 
@@ -40,11 +39,13 @@ angular.module('ProApp')
 
 			var userModalRef = firebasedb.database().ref('User');
 			
-			userModalRef.orderByChild("username").equalTo(username).once("child_added", function(data) {
+			userModalRef.orderByChild('username').equalTo(username).once("value", function(data) {
 
+			var user = data.val(); 
+			user  = !!user ? user[Object.keys(user)[0]] : null;
 		
 
-				if(data.val() === null || data.val().username !== username){
+				if(user === null || user.username !== username){
 					alert("No user exists, Please sign up!.");
 					$state.go('signUp');
 				}else{
@@ -52,19 +53,23 @@ angular.module('ProApp')
 		
 					
 
-			userModalRef.orderByChild("username").equalTo(username).once("child_added", function(data) {
+	//		userModalRef.orderByChild("username").equalTo(username).once("child_added", function(data) {
 					
 
-					if(!!data.val() && data.val().username && data.val().password === password){
-						var key = data.key;
+					if(!!user && user.username && user.password === password){
+						var key = Object.keys(user)[0];
 						
 
 					/*	User.setUserInfo({username: data.val().username, name: data.val().name}); */
 
-						 store.set("username", username);
-	                     store.set("password", password);
-	                     store.set("key", key);
-	                     store.set("name", data.val().name); 
+
+	                     var name = user.name;
+
+	                     User.setUserInfo({username: username, name: name});
+
+	                     store.set('username', username);
+	                     store.set('name', name)
+
 	                    
 
 	                     $rootScope.$broadcast('userLoggedIn');
@@ -74,11 +79,12 @@ angular.module('ProApp')
 					}else{
 						alert("Incorrect password");
 					}
-				});
-			};
-      
-			});
+				};
+			}); 
 		};
+		
+
+
 		  
 
 
@@ -89,7 +95,7 @@ angular.module('ProApp')
 	
 
 
-		var user = store.get("username");
+		var user = store.get('username');
 		$scope.showLogout = function() {
 
 			if(user)

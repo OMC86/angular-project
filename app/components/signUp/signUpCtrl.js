@@ -1,6 +1,6 @@
 angular.module('ProApp')
 
-    .controller('SignUpCtrl', ['$scope', '$rootScope', 'store','$state', '$window','User', function($scope, $rootScope, store, $state, $window,User) {
+    .controller('SignUpCtrl', ['$scope', '$rootScope', 'store','$state', '$window','User', function($scope, $rootScope, store, $state, $window, User) {
 
       
 
@@ -15,26 +15,17 @@ $scope.submitForm = function(username, password, name, photo) {
             var photo = $scope.user.photo;
 
           
-            var storeRef = firebasedb.storage().ref('photos/' + photo);
+         /*   var storeRef = firebasedb.storage().ref('photos/' + photo);
 
                 storeRef.put(photo).then(function(snapshot) {
                     var pic = snapshot.val();
                     console.log(pic);
                 });
-            
+            */
 
 
-
-            
-
-
-
-
-
-            var userModalRef = firebasedb.database().ref('User');
-
-
-
+        
+        var userModalRef = firebasedb.database().ref('User');
 
 
          userModalRef.equalTo(username).once("value", function(data) {
@@ -58,13 +49,12 @@ $scope.submitForm = function(username, password, name, photo) {
                             password: password
                         });   
 
-
-                        store.set("username", username);
-                        store.set("key", newUser.key);
-                        store.set("name", name);
-
                       
                         User.setUserInfo({username: username, name: name});
+
+                        store.set('username', username);
+                        store.set('name', name);
+
                         $rootScope.$broadcast('userLoggedIn');
 
 

@@ -44,9 +44,9 @@ angular.module('ProApp')
 
 			var pId = $scope.postId;
 
-			var name = store.get("name");
+			var name = User.getUserInfo().name ?  User.getUserInfo().name  : '';
 			var comment = $scope.post.comment;
-			var username = store.get("username");
+			var username = User.getUserInfo().username ?  User.getUserInfo().username  : '';
 			var postsModalRef = firebasedb.database().ref('Comment');
 			var newPost = postsModalRef.push();
 			var postedOn = new Date();
@@ -60,14 +60,29 @@ angular.module('ProApp')
 					postedBy : username,
 					starCount: '1',
 					name : name, 
-					photo : User.getUserInfo().photo ?  User.getUserInfo().photo  : '',
+					photo : '',
 					postId : $stateParams.postId
 				});  
 
 				$state.go($state.current, {pId}, {reload: true});
 
 
-			};
+			};						
+
+
+									/*===GET COMMENT COUNT===*/
+
+
+
+
+
+
+
+
+
+
+
+
 
 									/*===DISPLAY COMMENT===*/
 

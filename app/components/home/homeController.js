@@ -1,11 +1,11 @@
 angular.module('ProApp')
 
-	.controller('HomeController', ['$scope', 'store', '$state', function($scope, store, $state) {
+	.controller('HomeController', ['$scope', 'store', '$state', 'User', function($scope, store, $state, User) {
 		$scope.title = "Welcome to the forum home page!";
 
 		// GET USERNAME //
 
-		var user = store.get("username");
+		var user = store.get('username')
 
 		// SHOW GO TO POST LIST, HIDE LOGIN AND SIGN UP //
 
