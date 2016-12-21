@@ -1,20 +1,22 @@
 <div class='row'>
 		<div class='col-sm-12'>
 	
-			<div class='dropdown' dropdown>
+			<div class='btn-group' uib-dropdown is-open='status.isopen'>
 
-				<button class="btn btn-default dropdown-toggle" type='button' id='sortBy' data-toggle="dropdown" aria-haspopup='true' aria-expanded='true' data-target='#drop-menu' ng-click="dropDown()">Sort By{{selectedItem}}
+				<button id='single-button' type='button' class='btn btn-info' uib-dropdown-toggle ng-disabled='disabled'> Sort By
 				<span class='caret'></span>
 				</button>
 
-				<ul id='drop-menu' class="dropdown-menu" aria-labelledby='drop-down-menu'>
-					<li ng-repeat="item in items"><a ng-click="select()">{{item}}</a></li>
+				<ul class="dropdown-menu" uib-dropdown-menu role='menu' aria-labelledby='single-button'> 
+					<li role="menuitem"><a sref="postList" ng-click=newestPost()>Newest</a></li>
+			        <li role="menuitem"><a sref="postList" ng-click=oldestPost()>Oldest</a></li>
+			        <li role="menuitem"><a sref="postList" ng-click=namePost()>Name</a></li>
 					
 				</ul>
 			</div>
 		</div>
 	</div>
-</div>
 
 
-    
+
+   

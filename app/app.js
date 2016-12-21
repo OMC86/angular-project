@@ -1,6 +1,7 @@
 angular.module('ProApp', [
 	'ngRoute',
 	'ui.router',
+	'ui.bootstrap',
 	'angular-storage',
 	'firebase',
 	'NavDirective',

@@ -1,8 +1,8 @@
-angular.module('DropDownBtn', [])
+angular.module('ProApp')
 
 	.directive('btnDropDown', function() {
 		return {
-			restrict: 'EA',
+			restrict: 'E',
 			templateUrl: 'app/views/btnDropDown.html'
 		};
 	});

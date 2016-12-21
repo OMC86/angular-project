@@ -9,6 +9,7 @@ angular.module('ProApp')
 			var postTitle = $scope.post.title;
 			var postBody = $scope.post.body;
 			var username = store.get("username");
+			var name = store.get("name");
 			var postsModalRef = firebasedb.database().ref('Post');
 			var newPost = postsModalRef.push();
 			var postId = newPost.key;
@@ -24,7 +25,7 @@ angular.module('ProApp')
 					postedBy : username,
 					starCount: starCount,
 					commentCount: commentCount,
-					postByName : User.getUserInfo().name ?  User.getUserInfo().name  : ''
+					postByName : name
 				});  
 
 				$state.go('postList');

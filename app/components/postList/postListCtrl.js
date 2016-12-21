@@ -1,25 +1,92 @@
 angular.module('ProApp')
 
-	.controller('PostListCtrl', ['$scope', '$state', '$stateParams', function($scope, $state, $stateParams) {
+	.controller('PostListCtrl', ['$scope', '$state', '$stateParams', '$rootScope', function($scope, $state, $stateParams, $rootScope) {
 
 
-		/*--RETRIVE COMMENTS FROM DATABASE AND DISPLAY 10 PER PAGE (error can not use apply $ digest already in operation)--*/
+		/*--RETRIVE COMMENTS FROM DATABASE AND DISPLAY 10 PER PAGE DEFAULT VIEW--*/
+
 
 		$scope.postList = [];
 
 
-		var readPost = firebasedb.database().ref('Post').orderByChild('postedOn').limitToLast(10);
+				var readPost = firebasedb.database().ref('Post').orderByChild('postedOn').limitToLast(10);
 		
-			readPost.once('value', function(snapshot) {
+					readPost.once('value', function(snapshot) {
 	
 
-				$scope.$apply(function(){
+					$scope.$apply(function(){
 
 				
 
-				$scope.postList  = snapshot.val();
+					$scope.postList  = snapshot.val();
+				});
+			});
 
-						
+/*--RETRIVE COMMENTS FROM DATABASE AND DISPLAY 10 PER PAGE DEFAULT VIEW--*/
+
+
+		$rootScope.$on('newestPost', function() {
+
+			$scope.postList = [];
+
+
+				var readPost = firebasedb.database().ref('Post').orderByChild('postedOn').startAt().limitToLast(10);
+		
+					readPost.once('value', function(snapshot) {
+	
+
+					$scope.$apply(function(){
+
+				
+
+					$scope.postList  = snapshot.val();
+				});
+			});
+		});
+
+
+/*--RETRIVE COMMENTS FROM DATABASE AND DISPLAY 10 PER PAGE OLDEST POSTS--*/
+
+		$rootScope.$on('oldestPost', function() {
+
+			$scope.postList = [];
+
+
+				var readPost = firebasedb.database().ref('Post').orderByChild('postedOn').limitToFirst(10);
+		
+					readPost.once('value', function(snapshot) {
+	
+
+					$scope.$apply(function(){
+
+				
+
+					$scope.postList  = snapshot.val();
+				});
+			});
+		});
+
+/*--RETRIVE COMMENTS FROM DATABASE AND DISPLAY 10 PER PAGE POSTED BY NAME--*/
+
+
+		$rootScope.$on('namePost', function() {
+
+			$scope.postList = [];
+
+
+				var readPost = firebasedb.database().ref('Post').orderByChild('postByName').limitToLast(10);
+		
+				readPost.once('value', function(snapshot) {
+	
+
+					$scope.$apply(function(){
+
+				
+
+					$scope.postList  = snapshot.val();
+				});	
+			});
+		});			
 			
 				
 
@@ -28,8 +95,8 @@ angular.module('ProApp')
 				$state.go('read', {postId: postId});   
 			};
 
-		});
-	});
+		
+	
 }]);
 
 			
