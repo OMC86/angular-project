@@ -8,14 +8,14 @@ angular.module('ProApp')
 
 			var postTitle = $scope.post.title;
 			var postBody = $scope.post.body;
-			var username = store.get("username");
-			var name = store.get("name");
+			var username = User.getUserInfo().username ?  User.getUserInfo().username  : store.get('username');
+			var name = User.getUserInfo().name ?  User.getUserInfo().name  : store.get('name');
 			var postsModalRef = firebasedb.database().ref('Post');
 			var newPost = postsModalRef.push();
 			var postId = newPost.key;
 			var postedOn = new Date();
-			var starCount = 0;
-			var commentCount = 0;
+			var timeStamp = (new Date()).getTime();
+
 
 				newPost.set({
 					postId : postId,
@@ -23,37 +23,12 @@ angular.module('ProApp')
 					postBody : postBody,
 					postedOn : postedOn.toString(),
 					postedBy : username,
-					starCount: starCount,
-					commentCount: commentCount,
-					postByName : name
+					postByName : name,
+					timeStamp : timeStamp
 				});  
 
 				$state.go('postList');
 
-
-
-
-		/*	
-
- 		$rootScope.$on('voteUp', function(key){
- 			postKey.transaction(function(post) {
- 				if(post) {
- 					if(post.stars[Key]) {
- 						post.starCount--;
- 						post.stars[Key] = null;
- 					} else {
- 						post.starCount++;
- 						if (!post.stars) {
- 							post.stars = {};
- 						}
- 						post.stars[Key] = true;
- 					}
- 				}
- 				return post;
- 				});
- 			});
-
- 			*/
 
 		 }
 		

@@ -4,10 +4,7 @@ angular.module('ProApp', [
 	'ui.bootstrap',
 	'angular-storage',
 	'firebase',
-	'NavDirective',
-	'StarCountDirective',
-	'BackBtn',
-	'DropDownBtn'
+	
 	
 	])
 

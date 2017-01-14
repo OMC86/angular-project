@@ -1,0 +1,308 @@
+
+
+
+									/*DIRECTIVES*/
+ .btn-link{
+	color: deepskyblue;
+}
+
+
+
+									/*HOME*/
+
+
+#home:hover{
+	background: Linear-gradient(to bottom, deepskyblue, dodgerblue);
+	color: white;
+	transform: scale(1.5,1.5);
+	margin-left: 50px;
+
+}
+
+.animation{
+	animation-duration: 8s;
+	animation-name: textTrans;
+	animation-timing-function: ease;
+	animation-fill-mode: forwards;
+}
+
+@keyframes textTrans{
+
+	0%{
+		transform: translateZ(0px);
+	}
+	50%{ 
+		transform: translateZ(50px);
+	}
+	100%{
+		transform: translateZ(100px);
+	}
+}
+
+			
+
+									/*NAV BAR*/
+
+.formSearch {
+	padding-top: 10px;
+
+}
+
+
+.search {
+
+    border-radius: 5px;            
+    background:rgba(240,248,255);
+           
+}
+
+.navbar-custom {
+    background:tan;
+    color:dodgerblue;
+    border-radius:0;
+}
+
+.navbar-custom .navbar-nav > li > a {  
+    color:black;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: dodgerblue;
+    background-color: transparent;
+}
+.navbar-custom .navbar-brand {
+    color:black;
+}
+
+
+
+
+								/* LOGIN/LOGOUT 'LOGIN'*/
+
+#btnLogout{
+	display: block;
+	width: 500px;
+	height: 50px;
+	
+}
+
+
+
+								/* NEW POST FORM*/
+
+
+.formContainer{
+
+	display: inline-block;	
+	width: 100%;
+	margin-top: 50px;	
+
+}
+
+#title{
+	background-color: #FAEBD7;
+}
+
+#body{
+	background-color: #FAEBD7;
+}
+
+
+								/* BUTTONs 'POSTLIST' */
+
+
+#sortBy{
+	
+	margin-left: 50px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+
+#newPostBtn{
+	margin-top: 25px;
+}
+
+
+#toTop{
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 150px;
+	margin-bottom: 50px;
+
+}
+
+
+
+
+								/*POST LIST 'POSTLIST' */
+
+
+
+	
+
+.post-view{
+
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 75px;
+	border: 1px solid lightsteelblue;
+	padding: 10px;
+	width: 80%;
+	background-color: #FAEBD7;
+}
+
+.post-view:hover{
+	transition-property: ;
+	transition-duration: 0.2s; 
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 80px;
+	border: 1px solid black;
+	padding: 10px;
+	width: 85%;
+	background: Linear-gradient(to bottom, deepskyblue, dodgerblue);
+	color: white;
+	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#firstLine{
+	height: 2px;
+	
+
+}
+
+
+.post{
+	display: inline;
+	margin-left: 20px;
+
+}
+
+.cap{
+	display: inline;
+	margin-right: 10px;
+	text-transform: capitalize;
+	font-weight: bold;
+
+}
+
+
+
+							/*READ POST 'READ' */
+
+
+.readFull{
+
+	margin-top: 100px;
+	width: 80%;
+}
+
+
+.readStarCount{
+
+	margin-top: 25px;
+}
+
+
+.postDescription{
+
+	margin-left: 25px;
+}
+
+
+.userInfo{
+
+	margin-left: 25px;
+	margin-top: 25px;
+}
+
+
+.postBody{
+
+	margin-left: 25px;
+	margin-top: 25px;
+}
+
+						/*social icons #/READ */
+.social{
+
+	margin-top: 25px;
+	border-top: solid lightgrey 1px;
+	border-bottom: solid lightgrey 1px;
+	padding: 25px;
+	width: 80%;
+}
+
+
+#facebook{
+
+	padding-right: 5px;
+	color: lightgrey;
+}
+
+
+#twitter{
+
+	padding-left: 5px;
+	padding-right: 5px;
+	color: lightgrey;
+}
+
+
+#linkedin{
+
+	padding-left: 5px;
+	padding-right: 5px;
+	color: lightgrey;
+}
+
+
+#gPlus{
+
+	padding-left: 5px;
+	color: lightgrey;
+}
+
+
+#commentBubble{
+
+	float: right;
+}
+
+						/*READ COMMENT 'READ' */
+.commentStarCount{
+
+	display: inline;
+	float: right;
+}
+
+
+.readFullComment{
+
+	margin-top: 50px;
+	padding-bottom: 25px;
+	width: 80%;
+	border-bottom: solid 1px lightgrey;
+}
+
+.comment{
+
+	margin-top: 20px;
+}
+
+
+  						/*WRITE A COMMENT 'READ' */
+
+
+.userPhoto{
+
+	margin-top: 25px;
+}
+
+
+
+
+

@@ -22,15 +22,21 @@ angular.module('ProApp')
 				});
 			});
 
-/*--RETRIVE COMMENTS FROM DATABASE AND DISPLAY 10 PER PAGE DEFAULT VIEW--*/
 
+			/*--METHOD FOR BTN-DROP-DOWN DIRECTIVE, SHOW NEWST OR OLDEST POSTS--*/
 
-		$rootScope.$on('newestPost', function() {
+			$scope.sortPostByValue = function(value){
 
-			$scope.postList = [];
+				$scope.postList = [];
 
-
-				var readPost = firebasedb.database().ref('Post').orderByChild('postedOn').startAt().limitToLast(10);
+				if(value === 'Newest'){
+					readPost = firebasedb.database().ref('Post').orderByChild('timeStamp').limitToLast(5);
+				}else if(value === 'Oldest'){
+					readPost = firebasedb.database().ref('Post').orderByChild('timeStamp').limitToFirst(5);
+				}else{
+					readPost = firebasedb.database().ref('Post').orderByChild('timeStamp').limitToFirst(5);
+				}
+				
 		
 					readPost.once('value', function(snapshot) {
 	
@@ -38,55 +44,13 @@ angular.module('ProApp')
 					$scope.$apply(function(){
 
 				
-
 					$scope.postList  = snapshot.val();
 				});
 			});
-		});
+
+		};
 
 
-/*--RETRIVE COMMENTS FROM DATABASE AND DISPLAY 10 PER PAGE OLDEST POSTS--*/
-
-		$rootScope.$on('oldestPost', function() {
-
-			$scope.postList = [];
-
-
-				var readPost = firebasedb.database().ref('Post').orderByChild('postedOn').limitToFirst(10);
-		
-					readPost.once('value', function(snapshot) {
-	
-
-					$scope.$apply(function(){
-
-				
-
-					$scope.postList  = snapshot.val();
-				});
-			});
-		});
-
-/*--RETRIVE COMMENTS FROM DATABASE AND DISPLAY 10 PER PAGE POSTED BY NAME--*/
-
-
-		$rootScope.$on('namePost', function() {
-
-			$scope.postList = [];
-
-
-				var readPost = firebasedb.database().ref('Post').orderByChild('postByName').limitToLast(10);
-		
-				readPost.once('value', function(snapshot) {
-	
-
-					$scope.$apply(function(){
-
-				
-
-					$scope.postList  = snapshot.val();
-				});	
-			});
-		});			
 			
 				
 

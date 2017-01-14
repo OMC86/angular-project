@@ -1,0 +1,21 @@
+<div class='row'>
+		<div class='col-sm-12'>
+	
+			<div class='btn-group' uib-dropdown is-open='status.isopen'>
+
+				<button id='single-button' type='button' class='btn btn-info' uib-dropdown-toggle ng-disabled='disabled'> {{showByTypeValue.length ? showByTypeValue : 'Sort By'}} 
+				<span class='caret'></span>
+				</button>
+
+				<ul class="dropdown-menu" uib-dropdown-menu role='menu' aria-labelledby='single-button'> 
+					<li role="menuitem"><a sref="postList" href ng-click=onPostType('Newest')>Newest</a></li>
+			        <li role="menuitem"><a sref="postList" href ng-click=onPostType('Oldest')>Oldest</a></li>
+			       
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+
+   

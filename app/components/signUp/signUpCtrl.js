@@ -12,23 +12,15 @@ $scope.submitForm = function(username, password, name, photo) {
             var username = $scope.user.email;
             var password = $scope.user.password;
             var name = $scope.user.name;
-            var photo = $scope.user.photo;
-
+            
           
-         /*   var storeRef = firebasedb.storage().ref('photos/' + photo);
-
-                storeRef.put(photo).then(function(snapshot) {
-                    var pic = snapshot.val();
-                    console.log(pic);
-                });
-            */
-
+        
 
         
         var userModalRef = firebasedb.database().ref('User');
 
 
-         userModalRef.equalTo(username).once("value", function(data) {
+         userModalRef.orderByChild('username').equalTo(username).once("value", function(data) {
 
             
             console.log(data.val());
