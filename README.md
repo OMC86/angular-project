@@ -12,7 +12,7 @@ This app will allow users to register and log in. Once they are logged in they w
 
 ### How does it work?
 
-This app uses firebase refrences and queries to set and retrieve information submitted by users, which is stored on firebase database under three headings: User, Post and Comment. This site uses the AgularJS framework, and bootstrap for styling.
+This app uses firebase refrences and queries to set and retrieve information submitted by users which is stored on firebase database under three headings: User, Post and Comment. This site uses the AgularJS framework, and bootstrap for styling.
 
 ## Features
 
