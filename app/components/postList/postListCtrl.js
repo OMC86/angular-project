@@ -30,11 +30,11 @@ angular.module('ProApp')
 				$scope.postList = [];
 
 				if(value === 'Newest'){
-					readPost = firebasedb.database().ref('Post').orderByChild('timeStamp').limitToLast(5);
+					readPost = firebasedb.database().ref('Post').orderByChild('timeStamp').limitToLast(10);
 				}else if(value === 'Oldest'){
-					readPost = firebasedb.database().ref('Post').orderByChild('timeStamp').limitToFirst(5);
+					readPost = firebasedb.database().ref('Post').orderByChild('timeStamp').limitToFirst(10);
 				}else{
-					readPost = firebasedb.database().ref('Post').orderByChild('timeStamp').limitToFirst(5);
+					readPost = firebasedb.database().ref('Post').orderByChild('timeStamp').limitToFirst(10);
 				}
 				
 		
